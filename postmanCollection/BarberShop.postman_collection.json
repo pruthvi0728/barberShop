@@ -1,0 +1,645 @@
+{
+	"info": {
+		"_postman_id": "9ea86017-4aa4-4b98-9332-884482ccf50e",
+		"name": "BarberShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/categories",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Men Haircolor",
+									"type": "text"
+								},
+								{
+									"key": "slotTime",
+									"value": "10",
+									"description": "Need to pass as 5, 10, 15...",
+									"type": "text"
+								},
+								{
+									"key": "cleanUpTime",
+									"value": "5",
+									"description": "Need to pass as 5, 10, 15...",
+									"type": "text"
+								},
+								{
+									"key": "maxClientPerSlot",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "futureDaysBook",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "mondayToFridayOpeningTime",
+									"value": "08:00:00",
+									"type": "text"
+								},
+								{
+									"key": "mondayToFridayClosingTime",
+									"value": "20:00:00",
+									"type": "text"
+								},
+								{
+									"key": "saturdayOpeningTime",
+									"value": "10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "saturdayClosingTime",
+									"value": "22:00:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/categories",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get category by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/categories/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get category edit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/categories/1/edit",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"1",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Men Haircolor",
+									"type": "text"
+								},
+								{
+									"key": "slotTime",
+									"value": "30",
+									"description": "This is changed",
+									"type": "text"
+								},
+								{
+									"key": "cleanUpTime",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "maxClientPerSlot",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "futureDaysBook",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "mondayToFridayOpeningTime",
+									"value": "08:00:00",
+									"type": "text"
+								},
+								{
+									"key": "mondayToFridayClosingTime",
+									"value": "20:00:00",
+									"type": "text"
+								},
+								{
+									"key": "saturdayOpeningTime",
+									"value": "10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "saturdayClosingTime",
+									"value": "22:00:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/categories/3",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/categories/3",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Breaks",
+			"item": [
+				{
+					"name": "Get breaks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/breaks",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"breaks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create break",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "fromTime",
+									"value": "14:00:00",
+									"type": "text"
+								},
+								{
+									"key": "toTime",
+									"value": "15:00:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/breaks",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"breaks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get break by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/breaks/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"breaks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get breaks edit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/breaks/1/edit",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"breaks",
+								"1",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update break",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "fromTime",
+									"value": "14:00:00",
+									"type": "text"
+								},
+								{
+									"key": "toTime",
+									"value": "15:00:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/breaks/3",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"breaks",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete break",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/breaks/3",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"breaks",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Holidays",
+			"item": [
+				{
+					"name": "Get holidays",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/holidays",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"holidays"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create holidays",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2022-06-29",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/holidays",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"holidays"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get holiday by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/holidays/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"holidays",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get holiday edit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/holidays/1/edit",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"holidays",
+								"1",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update holiday",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2022-06-29",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/holidays/2",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"holidays",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete holiday",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/holidays/2",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"holidays",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "john@mailinator.com",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jane",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Doe",
+							"type": "text"
+						},
+						{
+							"key": "slotFrom",
+							"value": "2022-06-24 10:30",
+							"type": "text"
+						},
+						{
+							"key": "categoryId",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseurl}}/api/booking/create",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"booking",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Details booking",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/api/booking/details",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"booking",
+						"details"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "127.0.0.1:8000"
+		}
+	]
+}
