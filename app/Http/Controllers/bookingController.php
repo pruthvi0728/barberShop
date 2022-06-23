@@ -74,17 +74,6 @@ class bookingController extends Controller
             ], 422);
         }
 
-        // check For Date Validation
-        $slotTimeInMinutes = (int) $carbonDateOfSlotFrom->format('i');
-
-        if($slotTimeInMinutes % 5){
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Booking slots minute should be multiple of 5',
-                'data' => []
-            ], 422);
-        }
-
         $futureDate = Carbon::now()->addDays($categoryData->future_days_to_book)->format('Y-m-d');
 
         if($carbonDateOfSlotFrom->format('Y-m-d') > $futureDate){
@@ -148,9 +137,11 @@ class bookingController extends Controller
                 'data' => []
             ], 422);
         }else{
-            $takeCountSlotsOfBetween = slotsBooked::where('from', '<=', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('to', '>', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('category_id', $categoryData->id)->get()->count();
+            $takeCountSlotsOfFromBetween = slotsBooked::where('from', '<=', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('to', '>', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('category_id', $categoryData->id)->get()->count();
 
-            if($takeCountSlotsOfBetween > 0){
+            $takeCountSlotsOfToBetween = slotsBooked::where('from', '<=', (clone $carbonDateOfSlotFrom)->addMinutes($categoryData->time_of_slot + $categoryData->clean_up_time)->format('Y-m-d H:i:s'))->where('to', '>', (clone $carbonDateOfSlotFrom)->addMinutes($categoryData->time_of_slot + $categoryData->clean_up_time)->format('Y-m-d H:i:s'))->where('category_id', $categoryData->id)->get()->count();
+
+            if($takeCountSlotsOfFromBetween > 0 || $takeCountSlotsOfToBetween > 0){
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Booking slot is conflicts to other slot.',

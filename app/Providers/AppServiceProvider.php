@@ -24,8 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('mod5', function ($attribute, $value, $parameters, $validator) {
-            return $value % 5 == 0;
-        });
+        //
     }
 }

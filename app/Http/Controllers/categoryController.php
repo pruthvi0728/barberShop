@@ -55,16 +55,14 @@ class categoryController extends Controller
     public function validationCheck($request){
         return Validator::make( $request->all(), [
             'name' => 'required',
-            'slotTime' => 'required|numeric|gt:0|mod5',
-            'cleanUpTime' => 'required|numeric|gt:0|mod5',
+            'slotTime' => 'required|numeric|gt:0',
+            'cleanUpTime' => 'required|numeric|gt:0',
             'maxClientPerSlot' => 'required|numeric',
             'futureDaysBook' => 'required|numeric',
             'mondayToFridayOpeningTime' => 'required',
             'mondayToFridayClosingTime' => 'required',
             'saturdayOpeningTime' => 'required',
             'saturdayClosingTime' => 'required'
-        ], [
-            'mod5' => 'Number should be like 5, 10, 15...'
         ]);
     }
 
