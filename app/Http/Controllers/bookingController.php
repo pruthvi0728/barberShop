@@ -148,7 +148,7 @@ class bookingController extends Controller
                 'data' => []
             ], 422);
         }else{
-            $takeCountSlotsOfBetween = slotsBooked::where('from', '>=', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('to', '<', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('category_id', $categoryData->id)->get()->count();
+            $takeCountSlotsOfBetween = slotsBooked::where('from', '<=', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('to', '>', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('category_id', $categoryData->id)->get()->count();
 
             if($takeCountSlotsOfBetween > 0){
                 return response()->json([
