@@ -109,11 +109,16 @@ class bookingController extends Controller
         }
 
         // check For Date Validation
-        $slotTimeInMinutes = (int) $carbonDateOfSlotFrom->format('i');
         $totalTimeOfSlot = $categoryData->time_of_slot + $categoryData->clean_up_time;
-        $diffInMunutes = $carbonDateOfSlotFrom->diffInMinutes(Carbon::parse($carbonDateOfSlotFrom->format('Y-m-d').' '.$openingTime));
+        $lastBreakTime = Breaks::where('to_time', '<=', $carbonDateOfSlotFrom->format('H:i:s'))->orderBy('to_time', 'DESC')->first();
+        if($lastBreakTime){
+            $multipleCheckTime = $lastBreakTime->to_time;
+        }else{
+            $multipleCheckTime = $openingTime;
+        }
+        $diffInMinutes = $carbonDateOfSlotFrom->diffInMinutes(Carbon::parse($carbonDateOfSlotFrom->format('Y-m-d').' '.$multipleCheckTime));
 
-        if($diffInMunutes % $totalTimeOfSlot){
+        if($diffInMinutes % $totalTimeOfSlot){
             return response()->json([
                 'status' => 'error',
                 'message' => 'Booking slots minute should be multiple of '.$totalTimeOfSlot,
@@ -149,7 +154,7 @@ class bookingController extends Controller
                 'message' => 'Booking slot is full.',
                 'data' => []
             ], 422);
-        }else{
+        }elseif(empty($slotDetails)){
             $takeCountSlotsOfFromBetween = slotsBooked::where('from', '<=', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('to', '>', $carbonDateOfSlotFrom->format('Y-m-d H:i:s'))->where('category_id', $categoryData->id)->get()->count();
 
             $takeCountSlotsOfToBetween = slotsBooked::where('from', '<=', (clone $carbonDateOfSlotFrom)->addMinutes($categoryData->time_of_slot + $categoryData->clean_up_time)->format('Y-m-d H:i:s'))->where('to', '>', (clone $carbonDateOfSlotFrom)->addMinutes($categoryData->time_of_slot + $categoryData->clean_up_time)->format('Y-m-d H:i:s'))->where('category_id', $categoryData->id)->get()->count();
