@@ -108,6 +108,19 @@ class bookingController extends Controller
             ], 422);
         }
 
+        // check For Date Validation
+        $slotTimeInMinutes = (int) $carbonDateOfSlotFrom->format('i');
+        $totalTimeOfSlot = $categoryData->time_of_slot + $categoryData->clean_up_time;
+        $diffInMunutes = $carbonDateOfSlotFrom->diffInMinutes(Carbon::parse($carbonDateOfSlotFrom->format('Y-m-d').' '.$openingTime));
+
+        if($diffInMunutes % $totalTimeOfSlot){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Booking slots minute should be multiple of '.$totalTimeOfSlot,
+                'data' => []
+            ], 422);
+        }
+
         $checkBreakTime = Breaks::where('from_time', '<=' , $carbonDateOfSlotFrom->format('H:i:s'))->where('to_time', '>', $carbonDateOfSlotFrom->format('H:i:s'))->get()->count();
 
         if($checkBreakTime > 0){
